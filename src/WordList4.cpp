@@ -84,10 +84,10 @@ int main(int argc, char *argv[]) {
       }
     }*/
 
+    int wordNum = 1;
     for (auto word : wordList) {
-      int wordNum = 1;
       if (!(wordNum % 50)) {
-        std::cout << "**** " << wordNum << " ****\n";
+        std::cout << "**** " << wordNum << " ****\n\n";
       }
       std::cout << word._en;
       getline(std::cin, dummy);
