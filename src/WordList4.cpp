@@ -25,11 +25,18 @@ std::vector<Word> readFile(std::string fileName) {
   return vec;
 }
 
-std::vector<std::string> quizTime(std::vector<std::string> wordList) {
+std::vector<Word> quizTime(std::vector<Word> wordList) {
+  int wordNum = 1;
   std::string input;
-  std::vector<std::string> vec;
+  std::vector<Word> vec;
+  std::string dummy;
   for (auto word : wordList) {
-    std::cout << word << "\n";
+    if (!(wordNum % 50)) {
+      std::cout << "**** " << wordNum << " ****\n\n";
+    }
+    std::cout << word._en;
+    getline(std::cin, dummy);
+    std::cout << word._ch << "\n";
     getline(std::cin, input);
     if ("" == input) {
 
@@ -37,11 +44,13 @@ std::vector<std::string> quizTime(std::vector<std::string> wordList) {
     else {
       vec.push_back(word);
     }
+    wordNum++;
   }
+
   return vec;
 }
 
-int writeFile(std::vector<std::string> wordList) {
+int writeFile(std::vector<Word> wordList) {
   std::ofstream outfile;
   std::string fileName;
   int count = 0;
@@ -51,7 +60,7 @@ int writeFile(std::vector<std::string> wordList) {
   outfile.open(fileName);
 
   for (auto word : wordList) {
-    outfile << word << "\n";
+    outfile << word._en << "     " << word._ch << "\n";
     count++;
   }
   outfile.close();
@@ -62,17 +71,16 @@ int writeFile(std::vector<std::string> wordList) {
 int main(int argc, char *argv[]) {
   std::string fileName = argv[1];
   auto wordList = readFile(fileName);
-
   int count = 1;
-  std::string dummy;
 
   std::cout << "Word list loaded, length is " << wordList.size() << std::endl;
+
   while(wordList.size()) {
     std::random_shuffle(wordList.begin(), wordList.end());
     std::cout << "\n**** # " << count << ": " << wordList.size()
       << " left ****\n\n";
 
-  /*  if (1 != count) {
+    if (1 != count) {
       std::string wFlag;
       std::cout << "Write current list to a file? (y/n)";
       getline(std::cin, wFlag);
@@ -82,18 +90,9 @@ int main(int argc, char *argv[]) {
       else {
         std::cout << "\n****Continue****\n\n";
       }
-    }*/
-
-    int wordNum = 1;
-    for (auto word : wordList) {
-      if (!(wordNum % 50)) {
-        std::cout << "**** " << wordNum << " ****\n\n";
-      }
-      std::cout << word._en;
-      getline(std::cin, dummy);
-      std::cout << word._ch << "\n\n";
-      wordNum++;
     }
+
+    wordList = quizTime(wordList);
     count ++;
   }
   return 0;

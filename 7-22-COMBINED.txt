@@ -3,19 +3,19 @@ isosceles     等腰的
 equilateral     等边的
 altitude     高度，海拔
 height     高
-Pythagorean theorem     勾股定理
+Pythagorean-theorem     勾股定理
 parallelogram     平行四边形
 quadrilateral     四边形
 perimeter     周长
 diameter     直径
-central angle     圆心角
+central-angle     圆心角
 chord     弦
 circumference     周围，圆周
 inscribed     内接
 circumscribed     外接
 aerobic     有氧的
-obtuse angle     不锋利的，钝角
-acute angle     锐角
+obtuse-angle     不锋利的，钝角
+acute-angle     锐角
 epiphany     显现
 excoriate     擦伤，痛斥
 pillory     上枷锁，示众，嘲笑
