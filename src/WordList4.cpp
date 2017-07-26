@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
+#include <random>
 #include <algorithm>
 
 class Word {
@@ -73,10 +74,12 @@ int main(int argc, char *argv[]) {
   auto wordList = readFile(fileName);
   int count = 1;
 
+  std::cout << "seed is " << std::time(0) << std::endl;
   std::cout << "Word list loaded, length is " << wordList.size() << std::endl;
 
   while(wordList.size()) {
-    std::random_shuffle(wordList.begin(), wordList.end());
+
+    std::shuffle(wordList.begin(), wordList.end(), std::default_random_engine(std::time(0)));
     std::cout << "\n**** # " << count << ": " << wordList.size()
       << " left ****\n\n";
 
